@@ -7,4 +7,10 @@ public class FootballCoach implements Coach {
 		return "Keep running for 45 minutes";	
 	}
 
+	@Override
+	public String getDailyFortune() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
