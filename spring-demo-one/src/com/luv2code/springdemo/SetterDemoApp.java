@@ -16,6 +16,9 @@ public class SetterDemoApp {
 		System.out.println(theCoach.getEmailAddress());
 		System.out.println(theCoach.getTeam());
 		
+		FootballCoach theCoach2 = context.getBean("secondCoach", FootballCoach.class);
+		System.out.println(theCoach2.getDailyFortune());
+		
 		context.close();
 
 	}
