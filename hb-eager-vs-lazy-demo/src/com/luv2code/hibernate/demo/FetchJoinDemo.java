@@ -3,13 +3,14 @@ package com.luv2code.hibernate.demo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
 import com.luv2code.hibernate.demo.entity.Student;
 
-public class EagerLazyDemo {
+public class FetchJoinDemo {
 
 	public static void main(String[] args) {
 		
@@ -27,11 +28,16 @@ public class EagerLazyDemo {
 			session.beginTransaction();
 			
 			int theId = 1;
-			Instructor tempInstructor = session.get(Instructor.class, theId);
 			
-			System.out.println("luv2code: Instructor: " + tempInstructor);
-			System.out.println("luv2code: Courses: " + tempInstructor.getCourses());
+			Query<Instructor> query = session.createQuery("select i from Instructor i "
+														+ "JOIN FETCH i.courses "
+														+ "where i.id=:theInstructorId",
+													Instructor.class);
 			
+			query.setParameter("theInstructorId", theId);
+			Instructor tempInstructor = query.getSingleResult();
+			
+			System.out.println("luv2code: Instructor: " + tempInstructor);		
 						
 			session.getTransaction().commit();
 			session.close();
