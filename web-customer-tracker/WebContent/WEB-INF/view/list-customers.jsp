@@ -6,6 +6,11 @@
 
 <head>
 	<title>List Customers</title>
+	
+	<link type="text/css"
+		rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/style.css"/>
+	
 </head>
 
 <body>
@@ -26,7 +31,7 @@
 					<th>Email</th>
 				</tr>
 				
-				<c:forEach var="tampCustomer" items="${customers}">
+				<c:forEach var="tempCustomer" items="${customers}">
 					
 					<tr>
 						<td>${tempCustomer.firstName}</td>
