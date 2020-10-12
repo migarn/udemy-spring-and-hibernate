@@ -48,10 +48,10 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("custoemrId") int theId,
+	public String showFormForUpdate(@RequestParam("customerId") int theId,
 			Model theModel) {
 		
-		Customer theCustoemr = customerService.getCustomer(theId);
+		Customer theCustomer = customerService.getCustomer(theId);
 		theModel.addAttribute("customer", theCustomer);
 		return "customer-form";
 	}
