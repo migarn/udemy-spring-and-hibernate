@@ -17,7 +17,7 @@ public class MainDemoApp {
 		
 		theAccountDAO.addAccount();
 		
-		theMembershipDAO.addAccount();
+		theMembershipDAO.addSillyMember();
 		
 		context.close();
 
