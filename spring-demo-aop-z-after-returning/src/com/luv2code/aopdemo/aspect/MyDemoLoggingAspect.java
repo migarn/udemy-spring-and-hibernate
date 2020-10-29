@@ -19,13 +19,31 @@ import com.luv2code.aopdemo.Account;
 public class MyDemoLoggingAspect {
 	
 	@AfterReturning(
-			pointcut="* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..)",
+			pointcut="execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))",
 			returning="result")
 	public void afterReturningFindAccountsAdvice(
 			JoinPoint theJoinPoint, List<Account> result) {
 		
+		String method = theJoinPoint.getSignature().toShortString();
+		System.out.println("\n=======>>> Executing @AfterReturnign on method: " + method);
+		System.out.println("\n=======>>> result is: " + result);
+		
+		convertAccountNamesToUpperCase(result);
+		
+		System.out.println("\n=======>>> result is: " + result);
+		
 	}
 			
+	private void convertAccountNamesToUpperCase(List<Account> result) {
+		
+		for (Account tempAccount : result) {
+			String theUpperName = tempAccount.getName().toUpperCase();
+			
+			tempAccount.setName(theUpperName);
+		}
+		
+	}
+
 	@Before("com.luv2code.aopdemo.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
 	public void beforeAddAccountAdvice(JoinPoint theJoinPoint) {
 		System.out.println("\n==========> Executing @Before advice on method)");
