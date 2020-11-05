@@ -40,7 +40,9 @@ public class MyDemoLoggingAspect {
 			result = theProceedingJoinPoint.proceed();
 		} catch (Exception e) {
 			myLogger.warning(e.getMessage());
-			result = "Major accident! But no worries, you private AOP helicopter is on the way!";
+//			result = "Major accident! But no worries, you private AOP helicopter is on the way!";
+			
+			throw e;
 		}
 		
 		long end = System.currentTimeMillis();
