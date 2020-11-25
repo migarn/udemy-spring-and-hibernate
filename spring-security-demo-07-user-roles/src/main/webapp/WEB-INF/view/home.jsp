@@ -22,6 +22,13 @@
 		<br><br>
 		Role(s): <security:authentication property="principal.authorities" />
 	</p>
+	
+	<hr>
+	
+	<p>
+		<a href="${pageContext.request.contextPath}/leaders">LeaderShip Meeting</a>
+		(Only for Manager peeps)
+	</p>
 		
 	<hr>
 	
