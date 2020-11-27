@@ -25,15 +25,23 @@
 	
 	<hr>
 	
+	<security:authorize access="hasRole('MANAGER')">
+	
 	<p>
 		<a href="${pageContext.request.contextPath}/leaders">LeaderShip Meeting</a>
 		(Only for Manager peeps)
 	</p>
 	
+	</security:authorize access="hasRole('ADMIN')">
+	
+	<security:authorize>
+	
 	<p>
 		<a href="${pageContext.request.contextPath}/systems">IT Systems Meeting</a>
 		(Only for Admin peeps)
 	</p>
+	
+	</security:authorize>
 		
 	<hr>
 	
